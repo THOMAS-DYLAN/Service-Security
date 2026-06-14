@@ -58,8 +58,7 @@ const Index = () => {
       { name: "Long-Term Care", path: "/retirement/long-term-care" },
     ],
     resources: [
-      { name: "Blog", path: "/resources/blog" },
-      { name: "Informational Videos", path: "/resources/informational-videos" },
+      { name: "Information", path: "/resources/information" },
       { name: "FAQ", path: "/resources/faq" },
       { name: "Medicare Guide", path: "/resources/medicare-guide" },
     ],
