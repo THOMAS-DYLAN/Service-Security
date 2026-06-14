@@ -19,6 +19,7 @@ import LifeInsurance from "./pages/retirement/LifeInsurance";
 import EstatePlanning from "./pages/retirement/EstatePlanning";
 import Information from "./pages/resources/Information";
 import Guides from "./pages/resources/Guides";
+import Checklist from "./pages/resources/Checklist";
 import Faq from "./pages/resources/Faq";
 import MedicareGuide from "./pages/resources/MedicareGuide";
 import Schedule from "./pages/contact/Schedule";
