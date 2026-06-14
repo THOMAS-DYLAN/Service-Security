@@ -15,7 +15,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 
@@ -23,17 +23,15 @@ const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-  const handleMouseEnter = async (menu: string) => {
-    await delay(175);
+  const handleMouseEnter = (menu: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenDropdown(menu);
   };
 
-  const handleMouseLeave = async () => {
-    await delay(160);
-    setOpenDropdown(null);
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 150);
   };
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
@@ -61,6 +59,7 @@ const Index = () => {
     ],
     resources: [
       { name: "Blog", path: "/resources/blog" },
+      { name: "Informational Videos", path: "/resources/informational-videos" },
       { name: "FAQ", path: "/resources/faq" },
       { name: "Medicare Guide", path: "/resources/medicare-guide" },
     ],
@@ -403,7 +402,7 @@ const Index = () => {
                 </div>
 
                 <a
-                  href="tel: 816-248-1100"
+                  href="tel:816-248-1100"
                   className=" flex items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 py-3 font-bold text-white transition hover:bg-blue-400"
                   onClick={closeMobileMenu}
                 >
@@ -761,10 +760,6 @@ const Index = () => {
               <p>
                 <a
                   href="mailto:mthomas@krs.insure"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = "mailto:mthomas@krs.insure";
-                  }}
                   className="mb-2 text-white"
                 >
                   mthomas@krs.insure

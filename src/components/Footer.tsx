@@ -34,10 +34,6 @@ const Footer = () => (
               <p>
                 <a
                   href="mailto:mthomas@krs.insure"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = "mailto:mthomas@krs.insure";
-                  }}
                   className="mb-2 text-white"
                 >
                   mthomas@krs.insure

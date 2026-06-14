@@ -6,9 +6,9 @@ import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import { routers } from "./router";
 
 const queryClient = new QueryClient();
+const router = createBrowserRouter(routers, { basename: "/Service-Security/" });
 
 const App = () => {
-  const router = createBrowserRouter(routers);
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

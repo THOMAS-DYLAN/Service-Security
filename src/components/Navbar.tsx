@@ -1,12 +1,20 @@
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+  const handleMouseEnter = (menu: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenDesktopDropdown(menu);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => setOpenDesktopDropdown(null), 150);
+  };
 
   const navigationMenu = {
     about: [
@@ -43,16 +51,6 @@ const Navbar = () => {
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setOpenMobileDropdown(null);
-  };
-
-  const handleMouseEnter = async (menu: string) => {
-    await delay(175);
-    setOpenDesktopDropdown(menu);
-  };
-
-  const handleMouseLeave = async () => {
-    await delay(160);
-    setOpenDesktopDropdown(null);
   };
 
   return (
