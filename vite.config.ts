@@ -14,7 +14,7 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
-  base: "/Service-Security/",
+  base: "/",
   build: {
     outDir: "dist",
   },
